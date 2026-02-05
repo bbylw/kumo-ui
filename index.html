@@ -47,6 +47,43 @@
             }
         }
     </script>
+    <script>
+        async function copyToClipboard(text, element) {
+            const originalText = element.querySelector('span:last-child').textContent;
+
+            try {
+                // Try modern API first
+                await navigator.clipboard.writeText(text);
+            } catch (err) {
+                // Fallback for non-secure contexts (e.g. file://)
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                } catch (e) {
+                    console.error('Copy failed', e);
+                    return;
+                } finally {
+                    document.body.removeChild(textArea);
+                }
+            }
+
+            // Visual feedback
+            const label = element.querySelector('span:last-child');
+            label.textContent = 'COPIED!';
+            label.classList.add('text-green-400');
+
+            setTimeout(() => {
+                label.textContent = originalText;
+                label.classList.remove('text-green-400');
+            }, 2000);
+        }
+    </script>
     <style>
         body {
             background-color: #050505;
@@ -193,7 +230,7 @@
                         <div class="group">
                             <p class="text-sm text-gray-400 font-mono mb-2">主要包</p>
                             <div class="code-block p-4 rounded font-mono text-sm group-hover:border-gray-500 transition-colors flex justify-between items-center cursor-pointer"
-                                onclick="navigator.clipboard.writeText('pnpm add @cloudflare/kumo')">
+                                onclick="copyToClipboard('pnpm add @cloudflare/kumo', this)">
                                 <span class="text-green-400">$ <span class="text-gray-100">pnpm add
                                         @cloudflare/kumo</span></span>
                                 <span class="text-xs text-gray-600 group-hover:text-gray-400">COPY</span>
@@ -203,7 +240,7 @@
                         <div class="group">
                             <p class="text-sm text-gray-400 font-mono mb-2">对等依赖 (Peer Dependencies)</p>
                             <div class="code-block p-4 rounded font-mono text-sm group-hover:border-gray-500 transition-colors flex justify-between items-center cursor-pointer"
-                                onclick="navigator.clipboard.writeText('pnpm add react react-dom @phosphor-icons/react')">
+                                onclick="copyToClipboard('pnpm add react react-dom @phosphor-icons/react', this)">
                                 <span class="text-green-400">$ <span class="text-gray-100">pnpm add react react-dom
                                         @phosphor-icons/react</span></span>
                                 <span class="text-xs text-gray-600 group-hover:text-gray-400">COPY</span>
@@ -258,17 +295,36 @@
 
                     <p class="text-gray-400 mb-6 font-light">直接从命令行查询组件文档，提高开发效率。</p>
 
-                    <div class="code-block p-6 rounded overflow-x-auto">
-                        <pre class="text-sm text-gray-300 font-mono leading-relaxed">
-<span class="text-gray-500"># 列出所有组件</span>
-<span class="text-green-400">$</span> npx @cloudflare/kumo ls
+                    <div class="space-y-6">
+                        <div class="group">
+                            <p class="text-sm text-gray-400 font-mono mb-2"># 列出所有组件</p>
+                            <div class="code-block p-4 rounded font-mono text-sm group-hover:border-gray-500 transition-colors flex justify-between items-center cursor-pointer"
+                                onclick="copyToClipboard('npx @cloudflare/kumo ls', this)">
+                                <span class="text-green-400">$ <span class="text-gray-100">npx @cloudflare/kumo
+                                        ls</span></span>
+                                <span class="text-xs text-gray-600 group-hover:text-gray-400">COPY</span>
+                            </div>
+                        </div>
 
-<span class="text-gray-500"># 获取特定组件文档 (例如 Button)</span>
-<span class="text-green-400">$</span> npx @cloudflare/kumo doc Button
+                        <div class="group">
+                            <p class="text-sm text-gray-400 font-mono mb-2"># 获取特定组件文档 (例如 Button)</p>
+                            <div class="code-block p-4 rounded font-mono text-sm group-hover:border-gray-500 transition-colors flex justify-between items-center cursor-pointer"
+                                onclick="copyToClipboard('npx @cloudflare/kumo doc Button', this)">
+                                <span class="text-green-400">$ <span class="text-gray-100">npx @cloudflare/kumo doc
+                                        Button</span></span>
+                                <span class="text-xs text-gray-600 group-hover:text-gray-400">COPY</span>
+                            </div>
+                        </div>
 
-<span class="text-gray-500"># 获取所有文档</span>
-<span class="text-green-400">$</span> npx @cloudflare/kumo docs
-</pre>
+                        <div class="group">
+                            <p class="text-sm text-gray-400 font-mono mb-2"># 获取所有文档</p>
+                            <div class="code-block p-4 rounded font-mono text-sm group-hover:border-gray-500 transition-colors flex justify-between items-center cursor-pointer"
+                                onclick="copyToClipboard('npx @cloudflare/kumo docs', this)">
+                                <span class="text-green-400">$ <span class="text-gray-100">npx @cloudflare/kumo
+                                        docs</span></span>
+                                <span class="text-xs text-gray-600 group-hover:text-gray-400">COPY</span>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
