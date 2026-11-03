@@ -72,7 +72,19 @@ pnpm --filter @cloudflare/kumo test
 ### 创建新组件
 
 ```bash
-pnpm --filter @cloudflare/kumo new-component
+pnpm --filter @cloudflare/kumo new:component
+```
+
+### Figma 插件
+
+```bash
+# 可选：在构建时启用 Token 同步
+# cp packages/kumo-figma/scripts/.env.example packages/kumo-figma/scripts/.env
+# $EDITOR packages/kumo-figma/scripts/.env  # 设置 FIGMA_TOKEN（可选 FIGMA_FILE_KEY）
+
+pnpm --filter @cloudflare/kumo-figma build
+# 在 Figma 中：Plugins > Development > Import plugin from manifest...
+# 选择：packages/kumo-figma/src/manifest.json
 ```
 
 ## 文档

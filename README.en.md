@@ -72,7 +72,19 @@ pnpm --filter @cloudflare/kumo test
 ### Creating Components
 
 ```bash
-pnpm --filter @cloudflare/kumo new-component
+pnpm --filter @cloudflare/kumo new:component
+```
+
+### Figma Plugin
+
+```bash
+# Optional: enable token sync during build
+# cp packages/kumo-figma/scripts/.env.example packages/kumo-figma/scripts/.env
+# $EDITOR packages/kumo-figma/scripts/.env  # set FIGMA_TOKEN (and optionally FIGMA_FILE_KEY)
+
+pnpm --filter @cloudflare/kumo-figma build
+# In Figma: Plugins > Development > Import plugin from manifest...
+# Select: packages/kumo-figma/src/manifest.json
 ```
 
 ## Documentation
