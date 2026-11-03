@@ -89,16 +89,17 @@ pnpm --filter @cloudflare/kumo-figma build
 
 ## This Site
 
-This landing page is built with **Vite, React 19, TypeScript, and Tailwind CSS v4**. The interface itself is composed from Kumo components (Tabs, Table, LayerCard, ClipboardText, Toasty, TableOfContents, and more).
+This landing page is built with **Vite, React 19, TypeScript, and Tailwind CSS v4**. The interface itself is composed from Kumo components (Tabs, Table, LayerCard, ClipboardText, Toasty, TableOfContents, and more). The source lives in `web/`, and the production build is published from the repository root.
 
 ```bash
+cd web
 pnpm install
-pnpm dev       # local development
-pnpm build     # typecheck and build to dist/
-pnpm preview   # preview the production build
+pnpm dev           # local development
+pnpm build         # typecheck and build to web/dist
+pnpm publish:site  # build and copy to the repository root
 ```
 
-Pushes to `main` build and deploy to GitHub Pages through GitHub Actions (Source: GitHub Actions) at `kumo.ndjp.net`.
+Pushes to `main` run `publish:site` through GitHub Actions, which commits the build output; GitHub Pages serves it from the repository root at `kumo.ndjp.net`.
 
 ## Documentation
 
