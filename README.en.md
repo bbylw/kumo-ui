@@ -87,10 +87,24 @@ pnpm --filter @cloudflare/kumo-figma build
 # Select: packages/kumo-figma/src/manifest.json
 ```
 
+## This Site
+
+This landing page is built with **Vite, React 19, TypeScript, and Tailwind CSS v4**. The interface itself is composed from Kumo components (Tabs, Table, LayerCard, ClipboardText, Toasty, TableOfContents, and more).
+
+```bash
+pnpm install
+pnpm dev       # local development
+pnpm build     # typecheck and build to dist/
+pnpm preview   # preview the production build
+```
+
+Pushes to `main` deploy to GitHub Pages through GitHub Actions at `kumo.ndjp.net`.
+
 ## Documentation
 
 - **Live Docs**: [kumo-ui.com](https://kumo-ui.com)
 - **AI/Agent Guide**: [AGENTS.md](https://github.com/cloudflare/kumo/blob/main/AGENTS.md)
+- **This Site**: [kumo.ndjp.net](https://kumo.ndjp.net)
 
 ## License
 
