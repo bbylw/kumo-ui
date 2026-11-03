@@ -1,0 +1,80 @@
+@source "../node_modules/@cloudflare/kumo/dist/**/*.{js,jsx,ts,tsx}";
+@import "@cloudflare/kumo/styles/tailwind";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--color-kumo-canvas);
+    background-image: radial-gradient(
+      color-mix(in oklab, var(--color-kumo-default) 10%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 32px 32px;
+    background-attachment: fixed;
+    color: var(--text-color-kumo-default);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: #f6821f;
+    color: #0a0a0a;
+  }
+}
+
+@keyframes kumo-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes kumo-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
+.rise {
+  animation: kumo-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.live-dot {
+  animation: kumo-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .rise,
+  .live-dot {
+    animation: none;
+  }
+}

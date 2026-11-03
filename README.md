@@ -87,10 +87,24 @@ pnpm --filter @cloudflare/kumo-figma build
 # 选择：packages/kumo-figma/src/manifest.json
 ```
 
+## 本站实现
+
+本站是 Kumo 的展示页，使用 **Vite + React 19 + TypeScript + Tailwind CSS v4** 构建，界面本身由 Kumo 组件组成（Tabs、Table、LayerCard、ClipboardText、Toasty、TableOfContents 等）。
+
+```bash
+pnpm install
+pnpm dev       # 本地开发
+pnpm build     # 类型检查并构建到 dist/
+pnpm preview   # 预览生产构建
+```
+
+推送 `main` 后由 GitHub Actions 构建并部署到 GitHub Pages，自定义域名为 `kumo.ndjp.net`。
+
 ## 文档
 
 - **在线文档**: [kumo-ui.com](https://kumo-ui.com)
 - **AI/Agent 指南**: [AGENTS.md](https://github.com/cloudflare/kumo/blob/main/AGENTS.md)
+- **本站**: [kumo.ndjp.net](https://kumo.ndjp.net)
 
 ## 许可证 (License)
 
