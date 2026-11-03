@@ -89,17 +89,16 @@ pnpm --filter @cloudflare/kumo-figma build
 
 ## 本站实现
 
-本站是 Kumo 的展示页，使用 **Vite + React 19 + TypeScript + Tailwind CSS v4** 构建，界面本身由 Kumo 组件组成（Tabs、Table、LayerCard、ClipboardText、Toasty、TableOfContents 等）。源码位于 `web/`，构建产物发布到仓库根目录。
+本站是 Kumo 的展示页，使用 **Vite + React 19 + TypeScript + Tailwind CSS v4** 构建，界面本身由 Kumo 组件组成（Tabs、Table、LayerCard、ClipboardText、Toasty、TableOfContents 等）。
 
 ```bash
-cd web
 pnpm install
-pnpm dev           # 本地开发
-pnpm build         # 类型检查并构建到 web/dist
-pnpm publish:site  # 构建并复制到仓库根目录
+pnpm dev       # 本地开发
+pnpm build     # 类型检查并构建到 dist/
+pnpm preview   # 预览生产构建
 ```
 
-推送 `main` 后由 GitHub Actions 自动执行 `publish:site` 并提交构建产物，GitHub Pages 从根目录发布，自定义域名为 `kumo.ndjp.net`。
+推送 `main` 后由 GitHub Actions 构建并部署到 GitHub Pages（Source: GitHub Actions），自定义域名为 `kumo.ndjp.net`。
 
 ## 文档
 
