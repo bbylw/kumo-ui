@@ -38,20 +38,6 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Ensure Pages uses GitHub Actions
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          current="$(gh api "repos/${{ github.repository }}/pages" --jq .build_type)"
-          if [ "$current" = "workflow" ]; then
-            echo "Pages already uses GitHub Actions."
-            exit 0
-          fi
-          gh api --method PUT "repos/${{ github.repository }}/pages" \
-            -f build_type=workflow \
-            -f cname=kumo.ndjp.net \
-            -F https_enforced=true
-
       - name: Configure Pages
         uses: actions/configure-pages@v6
 
