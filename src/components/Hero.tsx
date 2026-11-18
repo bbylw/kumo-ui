@@ -154,7 +154,7 @@ export function Hero() {
             href="#highlights"
             className="mt-8 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-kumo-subtle transition-colors hover:text-kumo-default"
           >
-            查看 2.17 更新
+            查看 2.19 更新
             <ArrowRight size={14} />
           </a>
         </div>
