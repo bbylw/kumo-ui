@@ -1,5 +1,5 @@
 import { Grid, GridItem, LayerCard, Text } from "@cloudflare/kumo";
-import { Cube, FigmaLogo, Palette, Robot, Sparkle, SquaresFour } from "@phosphor-icons/react";
+import { Globe, Path, Palette, Robot, Sparkle, SquaresFour } from "@phosphor-icons/react";
 import { HIGHLIGHTS, VERSION, RELEASED_AT } from "../content";
 import type { HighlightIcon } from "../content";
 import { SectionHeading } from "../components/ui";
@@ -9,8 +9,8 @@ const ICONS: Record<HighlightIcon, typeof Sparkle> = {
   blocks: SquaresFour,
   robot: Robot,
   palette: Palette,
-  cube: Cube,
-  figma: FigmaLogo,
+  globe: Globe,
+  skeleton: Path,
 };
 
 export function Highlights() {

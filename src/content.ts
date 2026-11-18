@@ -1,5 +1,5 @@
-export const VERSION = "2.17.0";
-export const RELEASED_AT = "2026-11-02";
+export const VERSION = "2.19.0";
+export const RELEASED_AT = "2026-11-16";
 export const SITE_URL = "https://kumo-ui.com";
 export const REPO_URL = "https://github.com/cloudflare/kumo";
 export const AGENTS_URL = "https://github.com/cloudflare/kumo/blob/main/AGENTS.md";
@@ -21,13 +21,23 @@ export const STATS = [
   { value: "3", label: "可安装 Blocks", hint: "PageHeader · ResourceList · DeleteResource" },
 ] as const;
 
-export type HighlightIcon = "sparkle" | "blocks" | "robot" | "palette" | "cube" | "figma";
+export type HighlightIcon = "sparkle" | "blocks" | "robot" | "palette" | "globe" | "skeleton";
 
 export const HIGHLIGHTS: { icon: HighlightIcon; title: string; body: string }[] = [
   {
     icon: "sparkle",
     title: "54 个组件 · 40 个原语",
     body: "覆盖表单、导航、浮层、数据展示与布局。所有 Base UI 原语都可以从 @cloudflare/kumo/primitives/* 按需导入。",
+  },
+  {
+    icon: "globe",
+    title: "Breadcrumbs 国际化与 RTL",
+    body: "2.19 为 KumoLocaleProvider 新增 breadcrumbs 文案（label、copy、copyTooltip），Breadcrumbs 支持 aria-label；RTL 布局下分隔符自动翻转。",
+  },
+  {
+    icon: "skeleton",
+    title: "SkeletonLine sketch 变体",
+    body: "2.18 新增 variant=\"sketch\" 线框风格占位符：圆角填充、滑动微光与超出边角的构造线；Banner.Action 也支持 href 渲染为链接。",
   },
   {
     icon: "blocks",
@@ -43,16 +53,6 @@ export const HIGHLIGHTS: { icon: HighlightIcon; title: string; body: string }[] 
     icon: "palette",
     title: "Tailwind v4 主题",
     body: "语义颜色令牌基于 light-dark() 自动切换深浅色；非 Tailwind 项目可直接使用 styles/standalone。",
-  },
-  {
-    icon: "cube",
-    title: "可选依赖",
-    body: "Chart 需要 echarts，AI Schemas 需要 zod；两者均为可选 peer，不增加默认安装体积。",
-  },
-  {
-    icon: "figma",
-    title: "Figma 插件",
-    body: "构建时可选同步设计令牌，让 Figma 与代码中的颜色、字体保持一致。",
   },
 ];
 
